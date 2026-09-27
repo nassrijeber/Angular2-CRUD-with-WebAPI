@@ -1,0 +1,55 @@
+:root {
+  --bg-0: #06261d;
+  --bg-1: #0b3d2e;
+  --bg-2: #12543f;
+  --surface: rgba(232, 245, 239, 0.08);
+  --surface-strong: rgba(232, 245, 239, 0.14);
+  --text: #e8f5ef;
+  --text-muted: rgba(232, 245, 239, 0.68);
+  --accent: #c4f042;
+  --accent-ink: #16350a;
+  --danger: #ff8f7a;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --radius: 22px;
+  --font: 'Outfit', system-ui, sans-serif;
+  --display: 'Syne', 'Outfit', sans-serif;
+  color: var(--text);
+  font-family: var(--font);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(196, 240, 66, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(64, 180, 140, 0.35), transparent 50%),
+    linear-gradient(165deg, var(--bg-0), var(--bg-1) 45%, #0a2f24 100%);
+  background-attachment: fixed;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}

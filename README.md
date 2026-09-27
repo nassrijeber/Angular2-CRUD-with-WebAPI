@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
 
+## Devizo (convertisseur de devises)
+
+L’app mobile-first **Devizo** vit dans le dossier [`devizo/`](./devizo/).
+
+```bash
+cd devizo
+npm install
+npm run dev
+```
+
+Cible GitHub prévue : [nassrijeber/Devizo](https://github.com/nassrijeber/Devizo) (dès que Cursor y a accès).
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
