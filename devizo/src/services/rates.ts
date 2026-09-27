@@ -59,7 +59,8 @@ export async function fetchRates(force = false): Promise<RatesSnapshot> {
   }
 
   try {
-    const url = `https://api.frankfurter.app/latest?from=EUR&to=${frankfurterSymbols()}`
+    // Use api.frankfurter.dev directly (api.frankfurter.app 301-redirects and breaks browser CORS).
+    const url = `https://api.frankfurter.dev/v1/latest?base=EUR&symbols=${frankfurterSymbols()}`
     const res = await fetch(url)
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const data = (await res.json()) as FrankfurterLatest
