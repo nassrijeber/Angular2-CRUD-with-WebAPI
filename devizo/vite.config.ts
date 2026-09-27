@@ -3,5 +3,11 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Relative paths required for Capacitor (Android / iOS WebView).
+  base: './',
   plugins: [react()],
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+  },
 })

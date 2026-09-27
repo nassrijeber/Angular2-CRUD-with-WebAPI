@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { DEFAULT_FROM, DEFAULT_TO } from './data/currencies'
+import { CURRENCY_MAP, DEFAULT_FROM, DEFAULT_TO, MAGHREB_CODES } from './data/currencies'
 import { useRates } from './hooks/useRates'
 import { convert, formatMoney, formatRate } from './services/rates'
 import {
@@ -71,7 +71,7 @@ export default function App() {
     : loading && !snapshot
       ? 'Mise à jour des taux…'
       : snapshot
-        ? `${snapshot.fromCache ? 'Cache' : 'En ligne'} · BCE ${snapshot.date}`
+        ? `${snapshot.fromCache ? 'Cache' : 'En ligne'} · ${snapshot.source} · ${snapshot.date}`
         : ''
 
   return (
@@ -79,7 +79,7 @@ export default function App() {
       <header className="topbar">
         <div>
           <p className="brand">Devizo</p>
-          <p className="tagline">Convertis en un clin d’œil</p>
+          <p className="tagline">Maghreb & monde, en un clin d’œil</p>
         </div>
         <div className="top-actions">
           <button
@@ -134,6 +134,27 @@ export default function App() {
           <p className={`status ${error ? 'is-error' : ''}`}>{statusText}</p>
         </section>
 
+        <section className="maghreb" aria-label="Devises du Maghreb">
+          <h2>Maghreb</h2>
+          <div className="maghreb-row">
+            {MAGHREB_CODES.map((code) => {
+              const c = CURRENCY_MAP[code]
+              const active = to === code
+              return (
+                <button
+                  key={code}
+                  type="button"
+                  className={`maghreb-chip ${active ? 'is-active' : ''}`}
+                  onClick={() => setTo(code)}
+                >
+                  <span aria-hidden>{c.flag}</span>
+                  {code}
+                </button>
+              )
+            })}
+          </div>
+        </section>
+
         <AdBanner premium={premium} onUpgrade={() => setPremiumOpen(true)} />
 
         <section className="history">
@@ -169,9 +190,7 @@ export default function App() {
                     <strong>
                       {h.amount.toLocaleString('fr-FR')} {h.from}
                     </strong>
-                    <span>
-                      → {formatMoney(h.result, h.to)}
-                    </span>
+                    <span>→ {formatMoney(h.result, h.to)}</span>
                   </button>
                 </li>
               ))}

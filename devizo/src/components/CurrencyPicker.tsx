@@ -15,7 +15,7 @@ type Props = {
   onNeedPremium: () => void
 }
 
-const FREE_FAVORITE_LIMIT = 4
+const FREE_FAVORITE_LIMIT = 6
 
 export function CurrencyPicker({
   open,
@@ -55,12 +55,16 @@ export function CurrencyPicker({
       : CURRENCIES.filter(
           (c) =>
             c.code.toLowerCase().includes(q) ||
-            c.name.toLowerCase().includes(q),
+            c.name.toLowerCase().includes(q) ||
+            (c.region === 'maghreb' && 'maghreb'.includes(q)),
         )
     return [...filtered].sort((a, b) => {
       const af = favorites.includes(a.code) ? 0 : 1
       const bf = favorites.includes(b.code) ? 0 : 1
       if (af !== bf) return af - bf
+      const am = a.region === 'maghreb' ? 0 : 1
+      const bm = b.region === 'maghreb' ? 0 : 1
+      if (am !== bm) return am - bm
       return a.code.localeCompare(b.code)
     })
   }, [query, favorites])

@@ -157,6 +157,48 @@
   color: var(--danger);
 }
 
+.maghreb {
+  margin-top: 18px;
+  animation: rise 0.55s ease 0.08s both;
+}
+
+.maghreb h2 {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-size: 1.05rem;
+}
+
+.maghreb-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.maghreb-chip {
+  border: 1px solid rgba(232, 245, 239, 0.14);
+  background: rgba(0, 0, 0, 0.16);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 12px 8px;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.maghreb-chip span {
+  font-size: 1.25rem;
+}
+
+.maghreb-chip:hover,
+.maghreb-chip.is-active {
+  transform: translateY(-1px);
+  background: rgba(196, 240, 66, 0.16);
+  border-color: rgba(196, 240, 66, 0.45);
+}
+
 .history {
   margin-top: 22px;
   animation: rise 0.6s ease 0.12s both;

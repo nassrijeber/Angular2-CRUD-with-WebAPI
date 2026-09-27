@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Devizo</string>
+    <string name="title_activity_main">Devizo</string>
+    <string name="package_name">app.devizo.converter</string>
+    <string name="custom_url_scheme">app.devizo.converter</string>
+</resources>

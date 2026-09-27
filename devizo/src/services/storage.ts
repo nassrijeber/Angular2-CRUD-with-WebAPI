@@ -51,11 +51,12 @@ export function clearHistory() {
 }
 
 export function loadFavorites(): string[] {
+  const defaults = ['EUR', 'MAD', 'TND', 'DZD', 'EGP']
   try {
     const raw = localStorage.getItem(FAVORITES_KEY)
-    return raw ? (JSON.parse(raw) as string[]) : ['EUR', 'USD', 'XOF', 'GBP']
+    return raw ? (JSON.parse(raw) as string[]) : defaults
   } catch {
-    return ['EUR', 'USD', 'XOF', 'GBP']
+    return defaults
   }
 }
 
